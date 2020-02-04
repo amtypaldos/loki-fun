@@ -13,7 +13,7 @@ services:
     volumes:
       - /var/log:/var/log
       - $PWD/:/etc/promtail/
-    command: -config.file=/etc/promtail/docker-config.yaml
+    command: -config.file=/etc/promtail/promtail-config.yaml
     networks:
       - loki
 
@@ -23,6 +23,19 @@ services:
       - "3000:3000"
     networks:
       - loki
+
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+        - "9090:9090"
+    volumes:
+        - $PWD:/prometheus.yaml
+    networks:
+        - loki
+    command: >-
+        --config.file=/app.cfg/prometheus.yaml
+
 
   loki:
     image: grafana/loki:latest
