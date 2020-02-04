@@ -30,7 +30,7 @@ services:
     ports:
         - "9090:9090"
     volumes:
-        - $PWD:/prom-config/prometheus.yaml
+        - $PWD:/prom-config/
     networks:
         - loki
     command: >-
