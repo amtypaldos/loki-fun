@@ -12,4 +12,4 @@ rule_files:
 scrape_configs:
   - job_name: 'promtail'
     static_configs:
-      - targets: ['promtail:9080/metrics']
+      - targets: ['promtail:9080']
